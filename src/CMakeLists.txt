@@ -36,6 +36,7 @@ set( PUB_HEADERS
   CSPropMetal.h
   CSPropConductingSheet.h
   CSPropExcitation.h
+  CSPropPBCExcitation.h
   CSPropProbeBox.h
   CSPropDumpBox.h
   CSPropResBox.h
@@ -76,6 +77,7 @@ set(SOURCES
   CSPropMetal.cpp
   CSPropConductingSheet.cpp
   CSPropExcitation.cpp
+  CSPropPBCExcitation.cpp
   CSPropProbeBox.cpp
   CSPropDumpBox.cpp
   CSPropResBox.cpp
