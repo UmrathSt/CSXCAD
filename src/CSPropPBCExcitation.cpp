@@ -296,6 +296,7 @@ bool CSPropPBCExcitation::ReadFromXML(TiXmlNode &root)
 
     TiXmlElement *SINweight = prop->FirstChildElement("SINWeight");
     TiXmlElement *COSweight = prop->FirstChildElement("COSWeight");
+    std::cout << "CSPropPBCExcitation.cpp: trying the read the sin/cos excitation functions from the xml" << std::endl;
     if (SINweight!=NULL)
     {
         ReadTerm(SINWeightFct[0],*SINweight,"X");
