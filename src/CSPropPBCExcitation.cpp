@@ -213,7 +213,7 @@ bool CSPropPBCExcitation::Update(std::string *ErrStr, bool type)
         if ((EC!=ParameterScalar::NO_ERROR)  && (ErrStr!=NULL))
         {
             std::stringstream stream;
-            stream << std::endl << "Error in Excitation-Property Excitaion-Value (ID: " << uiID << "): ";
+            stream << std::endl << "Error in PBC Excitation-Property Excitaion-Value (ID: " << uiID << "): ";
             ErrStr->append(stream.str());
             PSErrorCode2Msg(EC,ErrStr);
         }
@@ -222,7 +222,7 @@ bool CSPropPBCExcitation::Update(std::string *ErrStr, bool type)
         if ((EC!=ParameterScalar::NO_ERROR)  && (ErrStr!=NULL))
         {
             std::stringstream stream;
-            stream << std::endl << "Error in Excitation-Property PropagationDir-Value (ID: " << uiID << "): ";
+            stream << std::endl << "Error in PBC Excitation-Property PropagationDir-Value (ID: " << uiID << "): ";
             ErrStr->append(stream.str());
             PSErrorCode2Msg(EC,ErrStr);
         }
@@ -232,7 +232,7 @@ bool CSPropPBCExcitation::Update(std::string *ErrStr, bool type)
     if ((EC!=ParameterScalar::NO_ERROR)  && (ErrStr!=NULL))
     {
         std::stringstream stream;
-        stream << std::endl << "Error in Excitation-Property Frequency-Value";
+        stream << std::endl << "Error in PBC Excitation-Property Frequency-Value";
         ErrStr->append(stream.str());
         PSErrorCode2Msg(EC,ErrStr);
     }
@@ -241,7 +241,7 @@ bool CSPropPBCExcitation::Update(std::string *ErrStr, bool type)
     if ((EC!=ParameterScalar::NO_ERROR)  && (ErrStr!=NULL))
     {
         std::stringstream stream;
-        stream << std::endl << "Error in Excitation-Property Delay-Value";
+        stream << std::endl << "Error in PBC Excitation-Property Delay-Value";
         ErrStr->append(stream.str());
         PSErrorCode2Msg(EC,ErrStr);
     }

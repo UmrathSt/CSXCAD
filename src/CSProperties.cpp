@@ -26,6 +26,7 @@
 #include "CSPropMetal.h"
 #include "CSPropConductingSheet.h"
 #include "CSPropExcitation.h"
+#include "CSPropPBCExcitation.h"
 #include "CSPropProbeBox.h"
 #include "CSPropDumpBox.h"
 #include "CSPropResBox.h"
@@ -182,6 +183,7 @@ CSPropDiscMaterial* CSProperties::ToDiscMaterial() { return dynamic_cast<CSPropD
 CSPropMetal* CSProperties::ToMetal() { return dynamic_cast<CSPropMetal*>(this); }
 CSPropConductingSheet* CSProperties::ToConductingSheet() { return dynamic_cast<CSPropConductingSheet*>(this); }
 CSPropExcitation* CSProperties::ToExcitation() { return dynamic_cast<CSPropExcitation*>(this); }
+CSPropPBCExcitation* CSProperties::ToPBCExcitation() { return dynamic_cast<CSPropPBCExcitation*>(this); }
 CSPropProbeBox* CSProperties::ToProbeBox() { return dynamic_cast<CSPropProbeBox*>(this); }
 CSPropResBox* CSProperties::ToResBox() { return dynamic_cast<CSPropResBox*>(this); }
 CSPropDumpBox* CSProperties::ToDumpBox() { return dynamic_cast<CSPropDumpBox*>(this); }
