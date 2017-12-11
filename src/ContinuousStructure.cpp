@@ -43,6 +43,7 @@
 #include "CSPropMetal.h"
 #include "CSPropConductingSheet.h"
 #include "CSPropExcitation.h"
+#include "CSPropPBCExcitation.h"
 #include "CSPropProbeBox.h"
 #include "CSPropDumpBox.h"
 #include "CSPropResBox.h"
@@ -477,6 +478,7 @@ bool ContinuousStructure::Write2XML(std::string file, bool parameterised, bool s
 
 const char* ContinuousStructure::ReadFromXML(TiXmlNode* rootNode)
 {
+    std::cout << "MY NEW Continuous Structure Library was used" << std::endl;
 	clear();
 	TiXmlNode* root = rootNode->FirstChild("ContinuousStructure");
 	if (root==NULL) { ErrString.append("Error: No ContinuousStructure found!!!\n"); return ErrString.c_str();}
@@ -524,13 +526,14 @@ const char* ContinuousStructure::ReadFromXML(TiXmlNode* rootNode)
 		else if (strcmp(cProp,"Metal")==0) newProp = new CSPropMetal(clParaSet);
 		else if (strcmp(cProp,"ConductingSheet")==0) newProp = new CSPropConductingSheet(clParaSet);
 		else if (strcmp(cProp,"Excitation")==0) newProp = new CSPropExcitation(clParaSet);
+        else if (strcmp(cProp,"PBCExcitation")==0) newProp = new CSPropPBCExcitation(clParaSet);
 		else if (strcmp(cProp,"ProbeBox")==0) newProp = new CSPropProbeBox(clParaSet);
 		else if (strcmp(cProp,"ChargeBox")==0) newProp = new CSPropProbeBox(clParaSet); //old version support
 		else if (strcmp(cProp,"ResBox")==0) newProp = new CSPropResBox(clParaSet);
 		else if (strcmp(cProp,"DumpBox")==0) newProp = new CSPropDumpBox(clParaSet);
 		else
 		{
-			std::cerr << "ContinuousStructure::ReadFromXML: Property with type: " << cProp << " is unknown... " << std::endl;
+            std::cerr << "ContinuousStructure(NEW)::ReadFromXML: Property with type: " << cProp << " is unknown... " << std::endl;
 			newProp=NULL;
 		}
 		if (newProp)

@@ -68,7 +68,7 @@ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CSXCAD_SOURCE_DIR}/cmake/Modules/"
 # fparser
 # $ cmake -D FPARSER_ROOT_DIR=~/opt/openEMS .
 IF(NOT EXISTS ${FPARSER_ROOT_DIR})
-    SET(FPARSER_ROOT_DIR /usr)
+    SET(FPARSER_ROOT_DIR /home/stefan_dlr/opt/openEMS/)
 ENDIF()
 message(STATUS "FPARSER_ROOT_DIR: ${FPARSER_ROOT_DIR}" )
 find_library(fparser_LIBRARIES 

@@ -50,6 +50,7 @@ class CSPropLumpedElement;
 class CSPropMetal;
 	class CSPropConductingSheet;
 class CSPropExcitation;
+class CSPropPBCExcitation;
 class CSPropProbeBox;
 	class CSPropDumpBox;
 class CSPropResBox;
@@ -77,7 +78,7 @@ public:
 	enum PropertyType
 	{
 		ANY = 0xffff, UNKNOWN = 0x001, MATERIAL = 0x002, METAL = 0x004, EXCITATION = 0x008, PROBEBOX = 0x010, RESBOX = 0x020, DUMPBOX = 0x040, /* unused = 0x080, */
-		DISPERSIVEMATERIAL = 0x100, LORENTZMATERIAL = 0x200, DEBYEMATERIAL = 0x400,
+        PBCEXCITATION=0x080, DISPERSIVEMATERIAL = 0x100, LORENTZMATERIAL = 0x200, DEBYEMATERIAL = 0x400,
 		DISCRETE_MATERIAL = 0x1000, LUMPED_ELEMENT = 0x2000, CONDUCTINGSHEET = 0x4000
 	};
 	
@@ -171,6 +172,8 @@ public:
 	CSPropConductingSheet* ToConductingSheet();
 	//! Convert to Excitation Property, returns NULL if type is different! \return Returns a CSPropExcitation* or NULL if type is different!
 	CSPropExcitation* ToExcitation();
+    //! Convert to PBCExcitation Property, returns NULL if type is different! \return Returns a CSPropPBCxcitation* or NULL if type is different!
+    CSPropPBCExcitation* ToPBCExcitation();
 	//! Convert to ProbeBox Property, returns NULL if type is different! \return Returns a CSPropProbeBox* or NULL if type is different!
 	CSPropProbeBox* ToProbeBox();
 	//! Convert to ResBox Property, returns NULL if type is different! \return Returns a CSPropResBox* or NULL if type is different!

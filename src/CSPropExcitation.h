@@ -25,6 +25,7 @@
   */
 class CSXCAD_EXPORT CSPropExcitation : public CSProperties
 {
+    friend class CSPropPBCExcitation;
 public:
 	CSPropExcitation(ParameterSet* paraSet,unsigned int number=0);
 	CSPropExcitation(CSProperties* prop);
