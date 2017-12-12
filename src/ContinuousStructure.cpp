@@ -478,7 +478,7 @@ bool ContinuousStructure::Write2XML(std::string file, bool parameterised, bool s
 
 const char* ContinuousStructure::ReadFromXML(TiXmlNode* rootNode)
 {
-    std::cout << "MY NEW Continuous Structure Library was used" << std::endl;
+    std::cout << "MOST RECENT Continuous Structure Library was used" << std::endl;
 	clear();
 	TiXmlNode* root = rootNode->FirstChild("ContinuousStructure");
 	if (root==NULL) { ErrString.append("Error: No ContinuousStructure found!!!\n"); return ErrString.c_str();}

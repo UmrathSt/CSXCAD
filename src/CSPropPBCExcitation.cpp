@@ -137,10 +137,10 @@ double CSPropPBCExcitation::GetWeightedExcitation(int ny, const double* coords, 
         std::cerr << "CSPropPBCExcitation::GetWeightedExcitation: Error evaluating the weighting function (ID: " << this->GetID() << ", n=" << ny << "): " << PSErrorCode2Msg(EC) << std::endl;
     }
     if(type){
-        return SINWeightFct[ny].GetValue()*GetExcitation(ny);
+        return SINWeightFct[ny].GetValue()*GetExcitation(ny, type);
     }
     if(!type){
-        return COSWeightFct[ny].GetValue()*GetExcitation(ny);
+        return COSWeightFct[ny].GetValue()*GetExcitation(ny, type);
     }
 }
 
@@ -303,6 +303,10 @@ bool CSPropPBCExcitation::ReadFromXML(TiXmlNode &root)
         ReadTerm(SINWeightFct[1],*SINweight,"Y");
         ReadTerm(SINWeightFct[2],*SINweight,"Z");
     }
+    else{
+        std::cout << "SinWeightFct was zero!!!" << std::endl;
+    }
+
     if (COSweight!=NULL)
     {
         ReadTerm(COSWeightFct[0],*COSweight,"X");
@@ -322,7 +326,7 @@ void CSPropPBCExcitation::ShowPropertyStatus(std::ostream& stream)
     stream << "  Active directions: " << ActiveDir[0] << "," << ActiveDir[1] << "," << ActiveDir[2] << std::endl;
     stream << "  SINExcitation\t: " << SINExcitation[0].GetValueString() << ", "  << SINExcitation[1].GetValueString() << ", "  << SINExcitation[2].GetValueString()  << std::endl;
     stream << "  SINWeighting\t: " << SINWeightFct[0].GetValueString() << ", "  << SINWeightFct[1].GetValueString() << ", "  << SINWeightFct[2].GetValueString()  << std::endl;
-    stream << "  SINExcitation\t: " << COSExcitation[0].GetValueString() << ", "  << COSExcitation[1].GetValueString() << ", "  << COSExcitation[2].GetValueString()  << std::endl;
+    stream << "  COSExcitation\t: " << COSExcitation[0].GetValueString() << ", "  << COSExcitation[1].GetValueString() << ", "  << COSExcitation[2].GetValueString()  << std::endl;
     stream << "  COSWeighting\t: " << COSWeightFct[0].GetValueString() << ", "  << COSWeightFct[1].GetValueString() << ", "  << COSWeightFct[2].GetValueString()  << std::endl;
     stream << "  Propagation Dir: " << PropagationDir[0].GetValueString() << ", "  << PropagationDir[1].GetValueString() << ", "  << PropagationDir[2].GetValueString()  << std::endl;
     stream << "  Delay\t\t: " << Delay.GetValueString() << std::endl;
