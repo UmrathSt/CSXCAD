@@ -36,7 +36,7 @@ if ~isfield(CSX,'Properties')
     error('CSXCAD::SetPBCExcitationWeight: no properties not found');
 end
 if ~isfield(CSX.Properties,'PBCExcitation')
-    error('CSXCAD::SetExcitationWeight: no excitation properties found');
+    error('CSXCAD::SetPBCExcitationWeight: no excitation properties found');
 end
 
 pos=0;
@@ -47,7 +47,7 @@ for n=1:numel(CSX.Properties.PBCExcitation)
 end
 
 if (pos==0)
-    error('CSXCAD::SetExcitationWeight: property not found');
+    error('CSXCAD::SetPBCExcitationWeight: property not found');
     return;
 end
 
