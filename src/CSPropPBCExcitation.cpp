@@ -98,7 +98,7 @@ const std::string CSPropPBCExcitation::GetWeightFunction(int ny, bool type)
     else
         return std::string();}
 
-double CSPropPBCExcitation::GetWeightedExcitation(int ny, const double* coords, bool type)
+double CSPropPBCExcitation::GetWeightedExcitation(int ny, const double* coords, bool type) // type = 1 -> Sin(t), type = 0 -> Cos(t)
 {
     if ((ny<0) || (ny>=3)) return 0;
     //Warning: this is not reentrant....!!!!
@@ -131,7 +131,7 @@ double CSPropPBCExcitation::GetWeightedExcitation(int ny, const double* coords, 
     if(type)
         EC = SINWeightFct[ny].Evaluate();
     if(!type)
-        EC = SINWeightFct[ny].Evaluate();
+        EC = COSWeightFct[ny].Evaluate();
     if (EC)
     {
         std::cerr << "CSPropPBCExcitation::GetWeightedExcitation: Error evaluating the weighting function (ID: " << this->GetID() << ", n=" << ny << "): " << PSErrorCode2Msg(EC) << std::endl;

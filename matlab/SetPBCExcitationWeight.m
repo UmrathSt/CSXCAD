@@ -50,7 +50,6 @@ if (pos==0)
     error('CSXCAD::SetPBCExcitationWeight: property not found');
     return;
 end
-
 CSX.Properties.PBCExcitation{pos}.SINWeight.ATTRIBUTE.X = sinweight{1};
 CSX.Properties.PBCExcitation{pos}.SINWeight.ATTRIBUTE.Y = sinweight{2};
 CSX.Properties.PBCExcitation{pos}.SINWeight.ATTRIBUTE.Z = sinweight{3};
