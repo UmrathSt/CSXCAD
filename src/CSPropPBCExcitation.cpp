@@ -173,29 +173,13 @@ void CSPropPBCExcitation::Init()
     }
 }
 
-void CSPropPBCExcitation::SetPropagationDir(double val, int Component)
-{
-    if ((Component<0) || (Component>=3)) return;
-    PropagationDir[Component].SetValue(val);
-}
 
-void CSPropPBCExcitation::SetPropagationDir(const std::string val, int Component)
-{
-    if ((Component<0) || (Component>=3)) return;
-    PropagationDir[Component].SetValue(val);
-}
 
-double CSPropPBCExcitation::GetPropagationDir(int Component)
-{
-    if ((Component<0) || (Component>=3)) return 0;
-    return PropagationDir[Component].GetValue();
-}
 
-const std::string CSPropPBCExcitation::GetPropagationDirString(int Comp)
-{
-    if ((Comp<0) || (Comp>=3)) return NULL;
-    return PropagationDir[Comp].GetString();
-}
+
+
+
+
 
 
 bool CSPropPBCExcitation::Update(std::string *ErrStr, bool type)
@@ -216,15 +200,7 @@ bool CSPropPBCExcitation::Update(std::string *ErrStr, bool type)
             ErrStr->append(stream.str());
             PSErrorCode2Msg(EC,ErrStr);
         }
-        EC=PropagationDir[i].Evaluate();
-        if (EC!=ParameterScalar::NO_ERROR) bOK=false;
-        if ((EC!=ParameterScalar::NO_ERROR)  && (ErrStr!=NULL))
-        {
-            std::stringstream stream;
-            stream << std::endl << "Error in PBC Excitation-Property PropagationDir-Value (ID: " << uiID << "): ";
-            ErrStr->append(stream.str());
-            PSErrorCode2Msg(EC,ErrStr);
-        }
+
     }
     EC=m_Frequency.Evaluate();
     if (EC!=ParameterScalar::NO_ERROR) bOK=false;
@@ -271,7 +247,7 @@ bool CSPropPBCExcitation::Write2XML(TiXmlNode& root, bool parameterised, bool sp
     prop->InsertEndChild(COSWeight);
     prop->InsertEndChild(SINWeight);
 
-    WriteVectorTerm(PropagationDir,*prop,"PropDir",parameterised);
+
 
     return true;
 }
@@ -290,6 +266,7 @@ bool CSPropPBCExcitation::ReadFromXML(TiXmlNode &root)
     if (prop->QueryIntAttribute("Type",&iExcitType)!=TIXML_SUCCESS) return false;
 
     if (ReadVectorTerm(SINExcitation,*prop,"Excite",0.0)==false) return false;
+    if (ReadVectorTerm(COSExcitation,*prop,"Excite",0.0)==false) return false;
     ReadTerm(m_Frequency,*prop,"Frequency");
     ReadTerm(Delay,*prop,"Delay");
 
@@ -313,9 +290,8 @@ bool CSPropPBCExcitation::ReadFromXML(TiXmlNode &root)
         ReadTerm(COSWeightFct[2],*COSweight,"Z");
     }
     else{
-        std::cout << "SinWeightFct was zero!!!" << std::endl;
+        std::cout << "CosWeightFct was zero!!!" << std::endl;
     }
-    ReadVectorTerm(PropagationDir,*prop,"PropDir",0.0);
 
     return true;
 }
@@ -330,6 +306,5 @@ void CSPropPBCExcitation::ShowPropertyStatus(std::ostream& stream)
     stream << "  SINWeighting\t: " << SINWeightFct[0].GetValueString() << ", "  << SINWeightFct[1].GetValueString() << ", "  << SINWeightFct[2].GetValueString()  << std::endl;
     stream << "  COSExcitation\t: " << COSExcitation[0].GetValueString() << ", "  << COSExcitation[1].GetValueString() << ", "  << COSExcitation[2].GetValueString()  << std::endl;
     stream << "  COSWeighting\t: " << COSWeightFct[0].GetValueString() << ", "  << COSWeightFct[1].GetValueString() << ", "  << COSWeightFct[2].GetValueString()  << std::endl;
-    stream << "  Propagation Dir: " << PropagationDir[0].GetValueString() << ", "  << PropagationDir[1].GetValueString() << ", "  << PropagationDir[2].GetValueString()  << std::endl;
     stream << "  Delay\t\t: " << Delay.GetValueString() << std::endl;
 }

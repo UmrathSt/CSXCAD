@@ -112,6 +112,5 @@ protected:
     ParameterScalar COSExcitation[3];		// excitation amplitude vector
     ParameterScalar SINWeightFct[3];		// excitation amplitude weighting function
     ParameterScalar COSWeightFct[3];		// excitation amplitude weighting function
-    ParameterScalar PropagationDir[3];	// direction of propagation (should be a unit vector), needed for plane wave excitations
     ParameterScalar Delay;				// excitation delay only, for time-domain solver e.g. FDTD
 };
