@@ -15,8 +15,10 @@
 *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "ContinuousStructure.h"
 
+#include <ctime>
+#include <iomanip>
+#include "ContinuousStructure.h"
 #include "CSPrimPoint.h"
 #include "CSPrimBox.h"
 #include "CSPrimMultiBox.h"
@@ -478,7 +480,9 @@ bool ContinuousStructure::Write2XML(std::string file, bool parameterised, bool s
 
 const char* ContinuousStructure::ReadFromXML(TiXmlNode* rootNode)
 {
-    std::cout << "MOST RECENT Continuous Structure Library was used" << std::endl;
+    time_t t = time(0);
+    struct tm *now = localtime(&t);
+    std::cout << "The used Continuous Structure Library was compiled on: " << std::asctime(now) << std::endl;
 	clear();
 	TiXmlNode* root = rootNode->FirstChild("ContinuousStructure");
 	if (root==NULL) { ErrString.append("Error: No ContinuousStructure found!!!\n"); return ErrString.c_str();}

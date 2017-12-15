@@ -60,22 +60,22 @@ public:
     const std::string GetFrequencyString()  {return m_Frequency.GetValueString();}
 
     //! Set the excitation amplitude for a given component
-    void SetExcitation(double val, int Component=0, bool type=0);
+    void SetExcitation(double val, int Component=0, bool sin_type=0);
     //! Set the excitation amplitude for a given component
-    void SetExcitation(const std::string val, int Component=0, bool type=0);
+    void SetExcitation(const std::string val, int Component=0, bool sin_type=0);
     //! Get the excitation amplitude for a given component
-    double GetExcitation(int Component=0, bool type=0);
+    double GetExcitation(int Component=0, bool sin_type=0);
     //! Get the excitation amplitude as a string for a given component
-    const std::string GetExcitationString(int Comp=0, bool type=0);
+    const std::string GetExcitationString(int Comp=0, bool sin_type=0);
 
     //! Set a weighting factor for the given component. This will override the weighting function!
-    void SetWeight(double val, int ny, bool type=0);
+    void SetWeight(double val, int ny, bool sin_type=0);
     //! Set a weighting function for the given excitation component
-    int SetWeightFunction(const std::string fct, int ny, bool type=0);
+    int SetWeightFunction(const std::string fct, int ny, bool sin_type=0);
     //! Get the weighting function for the given excitation component
-    const std::string GetWeightFunction(int ny, bool type=0);
+    const std::string GetWeightFunction(int ny, bool sin_type=0);
 
-    double GetWeightedExcitation(int ny, const double* coords, bool type=0);
+    double GetWeightedExcitation(int ny, const double* coords, bool sin_type=0);
 
     //! Set the propagation direction for a given component
     void SetPropagationDir(double val, int Component=0);

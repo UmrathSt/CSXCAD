@@ -30,31 +30,30 @@ unsigned int CSPropPBCExcitation::GetNumber() {return uiNumber;}
 void CSPropPBCExcitation::SetExcitType(int val) {iExcitType=val;}
 int CSPropPBCExcitation::GetExcitType() {return iExcitType;}
 
-void CSPropPBCExcitation::SetExcitation(double val, int Component, bool type) // type=0: cos, type=1: sin
+void CSPropPBCExcitation::SetExcitation(double val, int Component, bool sin_type) // type=0: cos, type=1: sin
 {
     if ((Component<0) || (Component>=3)) return;
-    if (type)
+    if(sin_type)
         SINExcitation[Component].SetValue(val);
-    if (!type)
+    if(!sin_type)
         COSExcitation[Component].SetValue(val);
 }
 
-void CSPropPBCExcitation::SetExcitation(const std::string val, int Component, bool type)
+void CSPropPBCExcitation::SetExcitation(const std::string val, int Component, bool sin_type)
 {
     if ((Component<0) || (Component>=3)) return;
-    if (type)
+    if(sin_type)
         SINExcitation[Component].SetValue(val);
-    if (!type)
+    if (!sin_type)
         COSExcitation[Component].SetValue(val);
 }
 
-double CSPropPBCExcitation::GetExcitation(int Component, bool type)
+double CSPropPBCExcitation::GetExcitation(int Component, bool sin_type)
 {
     if ((Component<0) || (Component>=3)) return 0;
-    if (type)
+    if (sin_type)
         return SINExcitation[Component].GetValue();
-    if (!type)
-        return COSExcitation[Component].GetValue();
+    return COSExcitation[Component].GetValue();
 }
 
 const std::string CSPropPBCExcitation::GetExcitationString(int Comp, bool type)
@@ -312,6 +311,9 @@ bool CSPropPBCExcitation::ReadFromXML(TiXmlNode &root)
         ReadTerm(COSWeightFct[0],*COSweight,"X");
         ReadTerm(COSWeightFct[1],*COSweight,"Y");
         ReadTerm(COSWeightFct[2],*COSweight,"Z");
+    }
+    else{
+        std::cout << "SinWeightFct was zero!!!" << std::endl;
     }
     ReadVectorTerm(PropagationDir,*prop,"PropDir",0.0);
 
